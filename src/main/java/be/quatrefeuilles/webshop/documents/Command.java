@@ -7,10 +7,9 @@ import java.util.List;
 
 @Data
 @Builder
-public class User {
+public class Command {
 
-    private String firstName;
-    private String lastName;
-    private List<Command> Commands;
+    private List<Status> status;
+    private List<Document> documents;
 
 }
