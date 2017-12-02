@@ -7,21 +7,16 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Document
-public class User {
+public class File {
 
     @Id
     private String id;
 
-    private String firstName;
-    private String lastName;
-    private String eMail;
-    private List<Command> Commands;
+    private String url;
 
 }
