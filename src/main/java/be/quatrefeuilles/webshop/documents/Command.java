@@ -9,6 +9,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
+import static java.util.Comparator.comparing;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -19,7 +21,14 @@ public class Command {
     @Id
     private String id;
 
-    private List<Status> status;
+    private List<Status> statuses;
     private List<File> documents;
+
+    public Status currentStatus() {
+        return statuses.stream()
+                .sorted(comparing(Status::getDate).reversed())
+                .findFirst()
+                .get();
+    }
 
 }

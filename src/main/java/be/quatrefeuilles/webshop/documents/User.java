@@ -5,8 +5,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -21,7 +23,16 @@ public class User {
 
     private String firstName;
     private String lastName;
-    private String eMail;
-    private List<Command> Commands;
+    private String email;
+
+    @DBRef
+    private List<Command> commands;
+
+    public void addCommand(Command command) {
+        if (commands == null) {
+            commands = new ArrayList();
+        }
+        commands.add(command);
+    }
 
 }
