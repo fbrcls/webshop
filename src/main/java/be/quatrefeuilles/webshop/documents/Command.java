@@ -22,13 +22,19 @@ public class Command {
     private String id;
 
     private List<Status> statuses;
-    private List<File> documents;
+    private List<File> files;
 
     public Status currentStatus() {
         return statuses.stream()
                 .sorted(comparing(Status::getDate).reversed())
                 .findFirst()
                 .get();
+    }
+
+    public double price() {
+        return files.stream()
+                .mapToDouble(File::price)
+                .sum();
     }
 
 }
